@@ -1,4 +1,4 @@
-# python -W ignore main0.py --save --batch-size 8 -d /home/dyf/database/SunRGBD/SUNRGBD/data/ -lr 1e-4 --epoch 1000
+# python -W ignore main2_multi.py --save --batch-size 8 -d /home/dyf/database/NYUv2/aftercrop/ -lr 1e-4 --epoch 1000
 import cv2
 import os
 import sys
