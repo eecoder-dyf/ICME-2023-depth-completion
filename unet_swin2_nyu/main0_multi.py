@@ -3,7 +3,6 @@ import cv2
 import os
 import sys
 sys.path.append('../')
-from typing import OrderedDict
 import time
 import torch
 import criteria

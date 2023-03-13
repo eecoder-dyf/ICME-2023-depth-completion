@@ -3,7 +3,6 @@ import cv2
 import os
 import sys
 sys.path.append('../')
-from typing import OrderedDict
 import time
 import torch
 import criteria
@@ -16,8 +15,7 @@ from imageio import imread, imsave
 from torch.utils.tensorboard import SummaryWriter   
 from net_bak import *
 import shutil
-from torchstat import stat
-from thop import profile
+
 
 class AverageMeter:
     """Compute running average."""
@@ -229,7 +227,7 @@ def test_epoch(epoch, dataloader, model, model2, criterion, save=False):
                 TensorToDepthimg(raw.squeeze(dim=1), raw_name, ColorMap=True)
 
             dense_mm = torch.tensor(dense*256*1000)
-            dense_km = torch.tensor(dense*256*1000)
+            dense_km = torch.tensor(dense*256/1000)
             gt_mm = torch.tensor(gt*256*1000)
             gt_km = torch.tensor(gt*256/1000)
 
