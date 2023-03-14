@@ -4,7 +4,7 @@ Published on ICME 2023
 
 ## Dependencies
 * Pytorch>=1.10 with CUDA>=11.3
-* Tensorboard
+* tensorboard
 * imageio
 * opencv-python
 
@@ -14,8 +14,17 @@ Please prepare your dataset as the following structure:
 -folder
     -train
         -gt
+            -xxx.png
+            -xyy.png
+            -...
         -raw
+            -xxx.png
+            -xyy.png
+            -...
         -rgb
+            -xxx.png
+            -xyy.png
+            -...
     -val
         -(the same as train)
     -test
