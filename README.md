@@ -41,13 +41,18 @@ Please prepare your dataset as the following structure:
 * `unet_swin2_sun/main2_multi.py`: Code of training and testing Guided Completion Module.
 * folder`swin/` is copied from the official repo of [Swin Transformer](https://github.com/microsoft/Swin-Transformer).
 ## Get Started (Take SunRGBD Dataset as example)
+We train our network by a two-stage manner, frist we train the Self Completion Moudle, then train the Guided Completion Module.
 * **Training**
-```
+```bash
 cd unet_swin2_sun
+python -W ignore main0_multi.py --save --batch-size 32 -d /home/dyf/database/SunRGBD/SUNRGBD/data/ -lr 1e-4 --epoch 1000 --cuda 0 1
 python -W ignore main2_multi.py --save --batch-size 16 -d /home/dyf/database/SunRGBD/SUNRGBD/data/ -lr 1e-4 --epoch 1000 --cuda 0 1
 ```
 * **Testing**
-```
+After training SCM and GCM you can test the model by main2_multi.py
+```bash
 cd unet_swin2_sun
 python -W ignore main2_multi.py --save --batch-size 16 -d /home/dyf/database/SunRGBD/SUNRGBD/data/ -lr 1e-4 --epoch 1000 --cuda 0 1 --test
+# save pictures
+python -W ignore main2_multi.py --save --batch-size 16 -d /home/dyf/database/SunRGBD/SUNRGBD/data/ -lr 1e-4 --epoch 1000 --cuda 0 1 --test --savepic
 ```
