@@ -1,5 +1,5 @@
 # A Two-stage hybrid CNN-Transformer Network for RGB Guided Indoor Depth Completion
-This repo is the official code of "A Two-stage hybrid CNN-Transformer Network for RGB Guided Indoor Depth Completion"
+This repo is the official repository of "A Two-stage hybrid CNN-Transformer Network for RGB Guided Indoor Depth Completion"
 Published on ICME 2023
 
 ## Dependencies
