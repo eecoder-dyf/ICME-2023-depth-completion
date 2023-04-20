@@ -3,7 +3,7 @@ This repo is the official code of "A Two-stage hybrid CNN-Transformer Network fo
 Published on ICME 2023
 
 ## Dependencies
-* Pytorch>=1.10 with CUDA>=11.3
+* Pytorch≥1.10 with CUDA≥11.3
 * tensorboard
 * imageio
 * opencv-python
@@ -14,22 +14,20 @@ Please prepare your dataset as the following structure:
 -folder
     -train
         -gt
-            -xxx.png
-            -xyy.png
-            -...
+            - *.png
         -raw
-            -xxx.png
-            -xyy.png
-            -...
+            - *.png
         -rgb
-            -xxx.png
-            -xyy.png
-            -...
+            - *.png
     -val
         -(the same as train)
     -test
         -(the same as train)
 ```
+* **Dataset download link**
+
+    [NYUv2](http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/nyu_depth_v2_labeled.mat) and [SunRGBD](https://rgbd.cs.princeton.edu/data/SUNRGBD.zip) \
+    Note that we use the 1449 densely labeled pairs of aligned RGB and depth images. For NYUv2, we randomly selected 100 pictures for validation and 100 pictures for test, the rest for training; For SunRGBD, we randomly select 250 for validation and 250 for test, the rest for training.
 
 ## Code introduction
 * `net.py`: Code of Self Completion Module.
@@ -45,14 +43,18 @@ We train our network by a two-stage manner, frist we train the Self Completion M
 * **Training**
 ```bash
 cd unet_swin2_sun
-python -W ignore main0_multi.py --save --batch-size 32 -d /home/dyf/database/SunRGBD/SUNRGBD/data/ -lr 1e-4 --epoch 1000 --cuda 0 1
-python -W ignore main2_multi.py --save --batch-size 16 -d /home/dyf/database/SunRGBD/SUNRGBD/data/ -lr 1e-4 --epoch 1000 --cuda 0 1
+python -W ignore main0_multi.py --save --batch-size 32 -d /dir/of/your/data/folder/ -lr 1e-4 --epoch 1000 --cuda 0 1
+python -W ignore main2_multi.py --save --batch-size 16 -d /dir/of/your/data/folder/ -lr 1e-4 --epoch 1000 --cuda 0 1
 ```
 * **Testing**
 After training SCM and GCM you can test the model by main2_multi.py
 ```bash
 cd unet_swin2_sun
-python -W ignore main2_multi.py --save --batch-size 16 -d /home/dyf/database/SunRGBD/SUNRGBD/data/ -lr 1e-4 --epoch 1000 --cuda 0 1 --test
+python -W ignore main2_multi.py --save --batch-size 16 -d /dir/of/your/data/folder/ -lr 1e-4 --epoch 1000 --cuda 0 1 --test
 # save pictures
-python -W ignore main2_multi.py --save --batch-size 16 -d /home/dyf/database/SunRGBD/SUNRGBD/data/ -lr 1e-4 --epoch 1000 --cuda 0 1 --test --savepic
+python -W ignore main2_multi.py --save --batch-size 16 -d /dir/of/your/data/folder/ -lr 1e-4 --epoch 1000 --cuda 0 1 --test --savepic
 ```
+* **Pretrained Models**
+
+    We Release our pretrained models in [Google Drive](https://drive.google.com/drive/folders/1QNvR9ROXQPgH7v9KSYGFDIVmcfP9sMkl?usp=sharing) and [百度云](https://pan.baidu.com/s/1o_Qh3s-ysitzfGzjC9bZfA?pwd=icme).  The `checkpoint_best_loss.pth.tar` is for Self Completion Module and `second_checkpoint_best_loss.pth.tar` is for the Guided Completion Module.
+    

@@ -39,7 +39,7 @@ def parse_args(argv):
         '--dataset',
         type=str,
         default='/home/dyf/database/NYUv2/aftercrop/',
-        help='Training dataset'
+        help='Dataset root'
     )
     parser.add_argument(
         '--cuda',
@@ -52,7 +52,7 @@ def parse_args(argv):
         '--batch-size',
         type=int,
         default=4,
-        help='cuda device number'
+        help='batch size'
     )
     parser.add_argument(
         '--epoch',
@@ -88,7 +88,7 @@ def parse_args(argv):
     parser.add_argument(
         '--savepic',
         action='store_true',
-        help='Test save pictures'
+        help='Save pictures while testing'
     )
     parser.add_argument(
         '--optim',
